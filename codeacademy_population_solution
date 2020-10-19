@@ -1,0 +1,28 @@
+SELECT DISTINCT year from population_years;
+
+SELECT MAX(population) as Largst_pop_Gabon
+from population_years
+WHERE country = "Gabon";
+
+SELECT DISTINCT country as least_populated_10
+FROM population_years
+ORDER BY population ASC
+LIMIT 10;
+
+SELECT DISTINCT country as over_100million
+FROM population_years
+WHERE population > 100
+AND year = 2010
+ORDER BY Population DESC;
+
+SELECT COUNT(DISTINCT country) as islands_in_name
+FROM population_years
+WHERE country LIKE '%Island%';
+
+SELECT (SELECT population as Indonesia_2010
+FROM population_years
+WHERE country = "Indonesia"
+AND year = 2010) - (SELECT population as Indonesia_2000
+FROM population_years
+WHERE country = "Indonesia"
+AND year = 2000) AS year2000_year2010_diff;
